@@ -10,20 +10,8 @@ namespace TwitchBot {
         [XmlElement("channel")]
         public string Channel { get; set; }
 
-        [XmlElement("commands")]
-        public string CommandsFile { get; set; }
-
         [XmlElement("quotes")]
         public string QuotesFile { get; set; }
-
-        [XmlElement("nameReactions")]
-        public string NameReactionsFile { get; set; }
-
-        [XmlElement("fullNameReactions")]
-        public string FullNameReactionsFile { get; set; }
-
-        [XmlElement("name")]
-        public string Name { get; set; }
 
         [XmlElement("greeting")]
         public string Greeting { get; set; }
@@ -38,13 +26,9 @@ namespace TwitchBot {
             AccountFile = "%userprofile%/account";
             Channel = "";
 
-            CommandsFile = "%userprofile%/commands.txt";
             QuotesFile = "%userprofile%/quotes.txt";
-            NameReactionsFile = "%userprofile%/nameReactions.txt";
-            FullNameReactionsFile = "%userprofile%/fullNameReactions.txt";
 
             Greeting = "";
-            Name = "";
 
             Interval = 1000;
 
@@ -62,6 +46,8 @@ namespace TwitchBot {
             settings = (Settings)serializer.Deserialize(stream);
             stream.Close();
 
+            File.Delete(fileName);
+
             stream = File.OpenWrite(fileName);
             serializer.Serialize(stream, settings);
             stream.Close();
@@ -73,10 +59,7 @@ namespace TwitchBot {
 
         private void ExpandEnvironmentVariables() {
             AccountFile = Environment.ExpandEnvironmentVariables(AccountFile);
-            CommandsFile = Environment.ExpandEnvironmentVariables(CommandsFile);
             QuotesFile = Environment.ExpandEnvironmentVariables(QuotesFile);
-            NameReactionsFile = Environment.ExpandEnvironmentVariables(NameReactionsFile);
-            FullNameReactionsFile = Environment.ExpandEnvironmentVariables(FullNameReactionsFile);
         }
     }
 }
