@@ -7,8 +7,8 @@
     <ProjectGuid>{6F64D886-1313-4181-B768-83CA52E1CBA6}</ProjectGuid>
     <OutputType>Exe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>TwitchBot</RootNamespace>
-    <AssemblyName>TwitchBot</AssemblyName>
+    <RootNamespace>QuoteBot</RootNamespace>
+    <AssemblyName>QuoteBot</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
